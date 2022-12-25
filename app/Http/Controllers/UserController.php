@@ -30,11 +30,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'user_id' => 'required',
-            'name' => 'required',
-            'email' => 'required',
-            'level' => 'required',
-            'password' => 'required',
+            'user_id' => 'required|unique',
+            'name' => 'required|unique',
+            'email' => 'required|unique',
+            'level' => 'required|unique',
+            'password' => 'required|unique',
         ]);
 
         User::create([
@@ -58,10 +58,10 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'name' => 'required',
-            'email' => 'required',
-            'level' => 'required',
-            'password' => 'required',
+            'name' => 'required|unique',
+            'email' => 'required|unique',
+            'level' => 'required|unique',
+            'password' => 'required|unique',
         ];
 
 

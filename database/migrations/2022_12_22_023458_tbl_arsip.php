@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('level', function (Blueprint $table) {
-            $table->string('level');
+        Schema::create('tbl_arsip', function (Blueprint $table) {
+            $table->id('id_kantor');
+            $table->string('nama_dokumen');
+            $table->string('pengirim');
+            $table->enum('status', ['dipinjam', 'tersedia']);
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('level', function (Blueprint $table) {
-            $table->dropColumn('level');
-        });
+        Schema::dropIfExists('tbl_arsip');
     }
 };
