@@ -18,80 +18,66 @@
 </head>
 <body class="hold-transition sidebar-mini mx-auto" onload="myFunction()">
     <style>
-        /* Center the loader */
-        #loader {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        z-index: 1;
-        width: 150px;
-        height: 150px;
-        margin: -75px 0 0 -75px;
-        border: 16px solid #f3f3f3;
-        border-radius: 50%;
-        border-top: 16px solid hsl(204, 60%, 15%);
-        width: 120px;
-        height: 120px;
-        -webkit-animation: spin 2s linear infinite;
-        animation: spin 2s linear infinite;
+        .loader_bg{
+            position: fixed;
+            z-index: 999999;
+            background: #fff;
+            width: 100%;
+            height: 100%;
         }
 
-
-        @-webkit-keyframes spin {
-        0% { -webkit-transform: rotate(0deg); }
-        100% { -webkit-transform: rotate(360deg); }
+        .loader{
+            border: 0 solid transparent;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            top: calc(50vh - 75px);
+            left: 44%;
         }
 
-        @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+        .loader::before, .loader::after{
+            content: '';
+            border: 1em solid hsl(17, 8%, 17%);
+            border-radius: 50%;
+            width: inherit;
+            height: inherit;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: loader 2s linear infinite;
+            opacity: 0;
         }
 
-        /* Add animation to "page content" */
-        .animate-bottom {
-        position: relative;
-        -webkit-animation-name: animatebottom;
-        -webkit-animation-duration: 1s;
-        animation-name: animatebottom;
-        animation-duration: 1s
+        .loader::before{
+            animation-delay: .5s;
         }
 
-        @-webkit-keyframes animatebottom {
-        from { bottom:-100px; opacity:0 }
-        to { bottom:0px; opacity:1 }
-        }
-
-
-        @keyframes animatebottom {
-        from{ bottom:-100px; opacity:0 }
-        to{ bottom:0; opacity:1 }
-        }
-
-        #myDiv {
-        display: none;
+        @keyframes loader{
+            0%{
+                transform: scale(0);
+                opacity: 0;
+            }
+            50%{
+                opacity: 1;
+            }
+            100%{
+                transform: scale(1);
+                opacity: 0;
+            }
         }
     </style>
 
     <script>
-
-        // Loading Page
-        var myVar;
-
-        function myFunction() {
-        myVar = setTimeout(showPage, 1000);
-        }
-
-
-
-        function showPage() {
-        document.getElementById("loader").style.display = "none";
-        document.getElementById("myDiv").style.display = "block";
-        }
-
+        setTimeout(function() {
+            $('.loader_bg').fadeToggle();
+        }, 1500);
     </script>
 
-<div id="loader"></div>
-<div style="display:none;" id="myDiv" class="animate-bottom">
+  <div class="loader_bg">
+    <div class="loader"></div>
+  </div>
+
 
 <!-- Site wrapper -->
 <div class="wrapper">
@@ -144,6 +130,7 @@
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script src="path/to/dist/feather.js"></script>
+<script src="https://webapps1.chicago.gov/cdn/jQuery-3.4.1/jquery-3.4.1.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>

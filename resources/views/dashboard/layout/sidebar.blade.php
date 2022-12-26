@@ -55,6 +55,22 @@
                 </p>
               </a>
             </li>
+            <li class="nav-item user-panel">
+                <a href="#" class="nav-link {{ Request::is('') ? 'active' : '' }}">
+                  <i class="nav-icon fa fa-file"></i>
+                  <p>
+                    Pinjaman Dokumen
+                  </p>
+                </a>
+            </li>
+            <li class="nav-item user-panel">
+                <a href="#" class="nav-link {{ Request::is('') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-cart-arrow-down"></i>
+                  <p>
+                    Form Pinjaman
+                  </p>
+                </a>
+            </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

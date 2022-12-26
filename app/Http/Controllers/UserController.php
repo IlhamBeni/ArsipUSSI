@@ -14,10 +14,11 @@ class UserController extends Controller
     {
         $paginate = 5;
 
+        $post = Post::all();
         $posts = User::paginate($paginate);
         $user = User::findOrFail(Auth::id());
 
-        return view('dashboard.user.user', compact('user', 'posts'));
+        return view('dashboard.user.user', compact('user', 'posts', 'post'));
     }
 
     public function create()
@@ -30,11 +31,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'user_id' => 'required|unique',
-            'name' => 'required|unique',
-            'email' => 'required|unique',
-            'level' => 'required|unique',
-            'password' => 'required|unique',
+            'user_id' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'level' => 'required',
+            'password' => 'required',
         ]);
 
         User::create([
@@ -58,10 +59,10 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'name' => 'required|unique',
-            'email' => 'required|unique',
-            'level' => 'required|unique',
-            'password' => 'required|unique',
+            'name' => 'required',
+            'email' => 'required',
+            'level' => 'required',
+            'password' => 'required',
         ];
 
 
