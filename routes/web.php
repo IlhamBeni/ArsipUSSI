@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\EditProfileController;
 use App\Http\Controllers\UserController;
 
@@ -31,6 +32,7 @@ Route::get('/edit-profile', [EditProfileController::class, 'index'])->middleware
 Route::patch('/profile/{id}', [EditProfileController::class, 'update'])->name('profile.update')->middleware('auth');
 
 Route::group(['middleware' => ['auth', 'hak:1']], function (){
+    Route::resource('/document', DokumenController::class);
     Route::get('/user', [UserController::class,'index']);
     Route::post('/user', [UserController::class,'store']);
     Route::get('/user/create', [UserController::class,'create']);

@@ -36,6 +36,14 @@
                     </a>
                 </li>
                 <li class="nav-item user-panel d-flex">
+                    <a href="/document" class="nav-link {{ Request::is('document*') ? 'active' : '' }}">
+                      <i class="nav-icon fas fa-file-alt"></i>
+                      <p>
+                        Data Dokumen
+                      </p>
+                    </a>
+                </li>
+                <li class="nav-item user-panel d-flex">
                     <a href="#" class="nav-link {{ Request::is('#*') ? 'active' : '' }}">
                       <i class="nav-icon fas fa-file"></i>
                       <p>
@@ -43,6 +51,7 @@
                       </p>
                     </a>
                 </li>
+
                 @endif
             <li class="nav-header">
                 <b class="h5">Arsip</b>
